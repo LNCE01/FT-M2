@@ -13,6 +13,7 @@
 // 2) 'complete'    : debe setearse en false
 // Ayuda: usar 'this' en el constructor
 
+//Creamos este array ya que cuando se exporta en la seccion de abajo del documento, el value de la funcion toDoItems, es el arreglo toDoItems que aun no estaba definido. Asi que aqui lo hacemos para no romper el codigo
 var toDoItems = [];
 
 function ToDo(description) {
