@@ -14,7 +14,7 @@
 // Ayuda: usar 'this' en el constructor
 
 function ToDo(description) {
-  // Tu código acá:
+  //ttest
 }
 
 // Agregar un método denominado 'completeToDo' al prototipo de la clase ToDo
