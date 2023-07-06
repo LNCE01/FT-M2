@@ -14,8 +14,11 @@
 // Ayuda: usar 'this' en el constructor
 
 function ToDo(description) {
-  //ttest
+  const div = document.getElementById("createdBy");
+  console.log(div.innerHtml);
 }
+
+ToDo();
 
 // Agregar un método denominado 'completeToDo' al prototipo de la clase ToDo
 // No requiere ningún argumento
