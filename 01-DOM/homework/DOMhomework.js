@@ -1,10 +1,17 @@
 // Crear un array vacío llamado 'toDoItems'
 // Tu codigo acá:
 
-// En la página 'index.html' hay un elemento span cuyo texto es 'Aplicación creada por:'.
-// Usando querySelector seleccionar dicho span por su id ('createdBy') y luego usando innerHTML
-// agregar tu nombre al final del texto actual. Ej: 'Aplicación creada por Franco'
+const { prototype } = require("markdown-it/lib/token");
+
+//Creamos este array ya que cuando se exporta en la seccion de abajo del documento, el value de la funcion toDoItems, es el arreglo toDoItems que aun no estaba definido. Asi que aqui lo hacemos para no romper el codigo
+var toDoItems = [];
+
+// En la página 'index.html' hay un elemento span cuyo texto es 'Aplicación creada por:'. Usando querySelector seleccionar dicho span por su id ('createdBy') y luego usando innerHTML agregar tu nombre al final del texto actual. Ej: 'Aplicación creada por Franco'
+
 // Tu código acá:
+//Query Selector trae solo la primer coincidencia que tenga esa ID. querySelectorAll trae todas.
+var span = document.querySelector("#createdBy");
+span.innerHTML = span.innerHTML + " Nicolas";
 
 // Crear una clase denominada 'ToDo' cuyo constructor debe recibir un único parámetro del tipo string
 // con el nombre 'description' que será justamente la descripción del ToDo.
@@ -12,28 +19,23 @@
 // 1) 'description' : debe ser igual a la descripción pasada como parámetro al constructor
 // 2) 'complete'    : debe setearse en false
 // Ayuda: usar 'this' en el constructor
-
-//Creamos este array ya que cuando se exporta en la seccion de abajo del documento, el value de la funcion toDoItems, es el arreglo toDoItems que aun no estaba definido. Asi que aqui lo hacemos para no romper el codigo
-var toDoItems = [];
-
 function ToDo(description) {
-  //Query Selector trae solo la primer coincidencia que tenga esa ID. querySelectorAll trae todas.
-  var span = document.querySelector("#createdBy");
-  span.innerHTML = span.innerHTML + " Nicolas";
+  this.description = description;
+  this.complete = false;
 }
-
-ToDo();
 
 // Agregar un método denominado 'completeToDo' al prototipo de la clase ToDo
 // No requiere ningún argumento
 // Debe setear el atributo 'complete' del ToDo en true
-
 // Tu código acá:
+ToDo.prototype.completeToDo() = function () {
+  this.complete = true; 
+  //this.complete = !this.complete;  En vez de setear en true, mejor lo contrario a lo que este, asi si se hace click de nuevo, lo podemos des-setear.
+}
+
 // Agregar dos parámetros a la función 'buildToDo':
 //    1) Un objeto de la clase ToDo
 //    2) Index numérico
-//
-
 // La función debe realizar lo siguiente:
 //    1) Crear un elemento 'div' y asignárselo a una variable denominada 'toDoShell'
 //    2) Asignarle a 'toDoShell' la clase 'toDoShell'
@@ -49,6 +51,21 @@ ToDo();
 
 function buildToDo(todo, index) {
   // Tu código acá:
+  let toDoShell = document.createElement("div");
+  toDoShell.className = "toDoShell";
+
+  let toDoText = document.createElement("span");
+  toDoText.innerHTML = todo.description;
+
+  toDoText.setAttribute("id", index);
+
+  if (todo.complete) {
+    toDoText.setAttribute("class", "completeText");
+  }
+
+  toDoShell.appendChild(toDoText);
+
+  return toDoShell;
 }
 
 // La función 'buildToDos' debe crear un array de objetos toDo y devolverlo
@@ -58,6 +75,8 @@ function buildToDo(todo, index) {
 
 function buildToDos(toDos) {
   // Tu código acá:
+  //Metodo map recorre el array, por cada valor le aplica como callback la function buildToDo y devuelve un array
+  return toDos.map(buildToDo);
 }
 
 // La función 'displayToDos' se va a encargar de que se vean los toDo's en pantalla
@@ -71,6 +90,7 @@ function buildToDos(toDos) {
 
 function displayToDos() {
   // Tu código acá:
+  
 }
 
 // La función 'addToDo' agregará un nuevo ToDo al array 'toDoItems'
