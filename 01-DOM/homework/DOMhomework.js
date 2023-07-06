@@ -13,9 +13,12 @@
 // 2) 'complete'    : debe setearse en false
 // Ayuda: usar 'this' en el constructor
 
+var toDoItems = [];
+
 function ToDo(description) {
-  const div = document.getElementById("createdBy");
-  console.log(div.innerHtml);
+  //Query Selector trae solo la primer coincidencia que tenga esa ID. querySelectorAll trae todas.
+  var span = document.querySelector("#createdBy");
+  span.innerHTML = span.innerHTML + " Nicolas";
 }
 
 ToDo();
