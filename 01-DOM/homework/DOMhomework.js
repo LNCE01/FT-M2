@@ -112,6 +112,17 @@ function displayToDos() {
 
 function addToDo() {
   // Tu código acá:
+  let input = document.querySelector("#toDoInput");
+  if(input.value !== ""){
+    //cuando haya un valor en el search bar, creamos un to do
+    let toDo = new ToDo(input.value);
+    //Ingresar el to do en el arreglo
+    toDoItems.push(toDo);
+    //Limpiar el search bar
+    input.value = "";
+    //Visualizar las tareas
+    displayToDos();
+  }
 }
 
 // Agregar un 'Event Listener' para que cada vez que el botón 'AGREGAR' sea clickeado
