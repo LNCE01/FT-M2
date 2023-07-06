@@ -90,7 +90,15 @@ function buildToDos(toDos) {
 
 function displayToDos() {
   // Tu código acá:
-  
+  let toDoContainer = document.querySelector("#toDoContainer");
+  toDoContainer.innerHTML = "";
+  let builds = buildToDos(toDoItems);
+  //builds es un arreglo, tenemos que iterar sobre el, cada elemento se ve parecido al siguiente: 
+  //builds[0] = <div class='toDoShell'> <span id = id> Comprar Agua </span></div>
+  //Finalmente, a cada uno de esos elementos lo tenemos que concatenar al index.html a toDoContainer 
+  for(let i=0; i < builds.length; i++){
+    toDoContainer.appendChild(builds[i]);
+  }
 }
 
 // La función 'addToDo' agregará un nuevo ToDo al array 'toDoItems'
