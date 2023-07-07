@@ -1,7 +1,7 @@
 // Crear un array vacío llamado 'toDoItems'
 // Tu codigo acá:
 
-const { prototype } = require("markdown-it/lib/token");
+// const { prototype } = require("markdown-it/lib/token");
 
 //Creamos este array ya que cuando se exporta en la seccion de abajo del documento, el value de la funcion toDoItems, es el arreglo toDoItems que aun no estaba definido. Asi que aqui lo hacemos para no romper el codigo
 var toDoItems = [];
@@ -28,10 +28,10 @@ function ToDo(description) {
 // No requiere ningún argumento
 // Debe setear el atributo 'complete' del ToDo en true
 // Tu código acá:
-ToDo.prototype.completeToDo() = function () {
-  this.complete = true; 
+ToDo.prototype.completeToDo = function () {
+  this.complete = true;
   //this.complete = !this.complete;  En vez de setear en true, mejor lo contrario a lo que este, asi si se hace click de nuevo, lo podemos des-setear.
-}
+};
 
 // Agregar dos parámetros a la función 'buildToDo':
 //    1) Un objeto de la clase ToDo
@@ -93,10 +93,10 @@ function displayToDos() {
   let toDoContainer = document.querySelector("#toDoContainer");
   toDoContainer.innerHTML = "";
   let builds = buildToDos(toDoItems);
-  //builds es un arreglo, tenemos que iterar sobre el, cada elemento se ve parecido al siguiente: 
+  //builds es un arreglo, tenemos que iterar sobre el, cada elemento se ve parecido al siguiente:
   //builds[0] = <div class='toDoShell'> <span id = id> Comprar Agua </span></div>
-  //Finalmente, a cada uno de esos elementos lo tenemos que concatenar al index.html a toDoContainer 
-  for(let i=0; i < builds.length; i++){
+  //Finalmente, a cada uno de esos elementos lo tenemos que concatenar al index.html a toDoContainer
+  for (let i = 0; i < builds.length; i++) {
     toDoContainer.appendChild(builds[i]);
   }
 }
@@ -113,7 +113,7 @@ function displayToDos() {
 function addToDo() {
   // Tu código acá:
   let input = document.querySelector("#toDoInput");
-  if(input.value !== ""){
+  if (input.value !== "") {
     //cuando haya un valor en el search bar, creamos un to do
     let toDo = new ToDo(input.value);
     //Ingresar el to do en el arreglo
@@ -131,7 +131,8 @@ function addToDo() {
 //   2) Agregarle un 'click' event listener, pasándole la función 'addToDo' como callback
 
 // Tu código acá:
-
+let add = document.querySelector("#addButton");
+add.addEventListener("click", addToDo);
 // La función completeToDo se va a ejecutar cuando queramos completar un todo
 // [NOTA: Algunas cuestiones a tener en cuenta
 // Todo Event Listener recibe como parámetro el objeto 'event' conteniendo un montón de información que incluye
