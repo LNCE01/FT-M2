@@ -30,7 +30,7 @@ function ToDo(description) {
 // Tu código acá:
 ToDo.prototype.completeToDo = function () {
   this.complete = true;
-  //this.complete = !this.complete;  En vez de setear en true, mejor lo contrario a lo que este, asi si se hace click de nuevo, lo podemos des-setear.
+  // this.complete = !this.complete; // En vez de setear en true, mejor lo contrario a lo que este, asi si se hace click de nuevo, lo podemos des-setear.
 };
 
 // Agregar dos parámetros a la función 'buildToDo':
@@ -60,11 +60,13 @@ function buildToDo(todo, index) {
   toDoText.setAttribute("id", index);
 
   if (todo.complete) {
-    toDoText.setAttribute("class", "completeText");
+    toDoText.className = "completeText";
   }
 
   toDoShell.appendChild(toDoText);
 
+  //A cada uno de nuestros toDoText, le decimos: te pueden clickear y le pasamos la funcion a ejecutar
+  toDoText.addEventListener("click", completeToDo);
   return toDoShell;
 }
 
@@ -146,9 +148,14 @@ add.addEventListener("click", addToDo);
 //      esta función como callback
 
 function completeToDo(event) {
-  // DESCOMENTAR LA SIGUIENTE LINEA
-  //const index = event.target.id;
+  // Va a estar observando el id del elemento que se este tocando. El Evento es el click.
+  //evento.target es el elemento clickeado
+  //event.target.id es el id del elemento que fue clickeado
+  const index = event.target.id;
   // Tu código acá:
+  //Queremos agarrar lo que clickeamos y modificar el complete
+  toDoItems[index].completeToDo();
+  displayToDos();
 }
 
 // Una vez que llegaste a este punto verificá que todos los tests pasen
