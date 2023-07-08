@@ -49,6 +49,8 @@ ToDo.prototype.completeToDo = function () {
 //    7) Agregar 'toDoText' como hijo de 'toDoShell'
 //    8) Devolver la variable toDoShell
 
+//Genera la estructura para 1 todo. Ejemplo: <div> <span>Comprar agua</span> </div>
+//Tambien le asigna id,  las clases de estilo y event listener para cambiar la clase
 function buildToDo(todo, index) {
   // Tu código acá:
   let toDoShell = document.createElement("div");
@@ -75,9 +77,9 @@ function buildToDo(todo, index) {
 // Utilizar el método map usando la función previamente creada ('buildToDo')
 // Devolver el nuevo array
 
+//Metodo map recorre el array, por cada valor le aplica como callback la function buildToDo (Que le genera su estructura) y devuelve un array
 function buildToDos(toDos) {
   // Tu código acá:
-  //Metodo map recorre el array, por cada valor le aplica como callback la function buildToDo y devuelve un array
   return toDos.map(buildToDo);
 }
 
@@ -90,6 +92,7 @@ function buildToDos(toDos) {
 //     línea para hacer el llamado a esta funcion (displayToDos)
 //  6) Abrir o en el caso de ya tenerlo abierto, recargar, la página
 
+//Agrega todo lo que hicimos en el buildToDos en el HTML general para visualizarlo en la pagina.
 function displayToDos() {
   // Tu código acá:
   let toDoContainer = document.querySelector("#toDoContainer");
@@ -97,7 +100,7 @@ function displayToDos() {
   let builds = buildToDos(toDoItems);
   //builds es un arreglo, tenemos que iterar sobre el, cada elemento se ve parecido al siguiente:
   //builds[0] = <div class='toDoShell'> <span id = id> Comprar Agua </span></div>
-  //Finalmente, a cada uno de esos elementos lo tenemos que concatenar al index.html a toDoContainer
+  //Finalmente, a cada uno de esos elementos lo tenemos que concatenar al index.html a toDoContainer para que se visualice
   for (let i = 0; i < builds.length; i++) {
     toDoContainer.appendChild(builds[i]);
   }
