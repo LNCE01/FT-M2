@@ -13,23 +13,23 @@
 }
 
 
-
-/* button styling
-.btn {
-    border: none;
-    background-color: #eee;
-    color: rgb(41, 38, 38);
+.btn(@border){
+    display: inline-block;
+    border: @border;
+    background-color: @btn-bg-color;
+    color: white;
     font-size: 2rem;
     font-family: inherit;
     padding: 2rem 3rem;
     cursor: pointer;
-    border-radius: .5rem;
+    border-radius: .6rem;
     transition: all .3s;
-  }
+    user-select: none; 
+    &:hover {
+        background-color: white;
+        color: @btn-bg-color;
+        border: 1.2px solid @btn-bg-color;
+    } 
+}
   
-  .btn:hover {
-    background-color: rgb(41, 38, 38);
-    color: #eee;
-  } 
-  
-  */
+
