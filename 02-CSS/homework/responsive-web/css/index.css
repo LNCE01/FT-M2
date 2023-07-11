@@ -1,3 +1,22 @@
+/* button styling
+.btn {
+    border: none;
+    background-color: #eee;
+    color: rgb(41, 38, 38);
+    font-size: 2rem;
+    font-family: inherit;
+    padding: 2rem 3rem;
+    cursor: pointer;
+    border-radius: .5rem;
+    transition: all .3s;
+  }
+  
+  .btn:hover {
+    background-color: rgb(41, 38, 38);
+    color: #eee;
+  } 
+  
+  */
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
@@ -196,6 +215,11 @@ footer {
 }
 .home .intro p {
   padding: 0 15px;
+}
+.home .intro img {
+  border-radius: 21px;
+  width: 100%;
+  margin-top: 10px;
 }
 .home .music-images {
   display: flex;
