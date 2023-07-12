@@ -14,8 +14,21 @@ var traverseDomAndCollectElements = function (matchFunc, startEl) {
 // Detecta y devuelve el tipo de selector
 // devuelve uno de estos tipos: id, class, tag.class, tag
 
-var selectorTypeMatcher = function (selector) {
+let selectorTypeMatcher = function (selector) {
   // tu código aquí
+  //selector = 'div' > tag // tag . class
+  // #unID > id
+  if (selector[0] === "#") {
+    return "id";
+  }
+  if (selector[0] === ".") {
+    return "class";
+  }
+  // selector > tag.class > [tag, class]
+  if (selector.split(". ").length > 1) {
+    return "tag.class";
+  }
+  return "tag";
 };
 
 // NOTA SOBRE LA FUNCIÓN MATCH
