@@ -25,7 +25,7 @@ let selectorTypeMatcher = function (selector) {
     return "class";
   }
   // selector > tag.class > [tag, class]
-  if (selector.split(". ").length > 1) {
+  if (selector.split(".").length > 1) {
     return "tag.class";
   }
   return "tag";
