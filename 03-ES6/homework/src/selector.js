@@ -45,12 +45,22 @@ var matchFunctionMaker = function (selector) {
   } else if (selectorType === "class") {
     matchFunction = function (el) {
       var classes = el.classList; //clasess = ["clase1","clase2","clase3"]ß
-      for (let i = 0; i > classes.length; i++) {
+      for (let i = 0; i < classes.length; i++) {
         if ("." + classes[i] === selector) return true; //Supongamos que pasan el selector ".clase3", el loop empieza a recorrer el array classList y cuando matchea, devuelve true
       }
       return false;
     };
   } else if (selectorType === "tag.class") {
+    //Supongamos que buscamos un p.small, conviene usar un split
+    matchFunction = function (el) {
+      //para el ejemplo, cuando recorremos el arbol, el seria un elemento parecido a este <p class='small'></p>
+      var [tagBuscado, classBuscado] = selector.split("."); //Aca separamos en 'p' y en 'small'
+      //tenemos que buscar elementos donde se consigan las dos cosas asi que volvemos a llamar y utilizamos el operador & AND. A matchFunctionMaker se le pasa el tagBuscado (es decir el tag paragraph) y el que seria el elemento con el que comparamos cuando recorremos el arbol.
+      return (
+        matchFunctionMaker(tagBuscado)(el) &&
+        matchFunctionMaker("." + classBuscado)(el)
+      );
+    };
   } else if (selectorType === "tag") {
   }
   return matchFunction;
