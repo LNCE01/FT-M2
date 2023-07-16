@@ -62,6 +62,10 @@ var matchFunctionMaker = function (selector) {
       );
     };
   } else if (selectorType === "tag") {
+    matchFunction = function (el) {
+      //‹div>hola</div> >> el.tagName = 'DIV' >> el.tagName.toLowerCase() = 'div'
+      return el.tagName.toLowerCase() === selector;
+    };
   }
   return matchFunction;
 };
