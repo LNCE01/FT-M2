@@ -7,8 +7,18 @@ var traverseDomAndCollectElements = function (matchFunc, startEl) {
 
   // recorre el árbol del DOM y recolecta elementos que matchien en resultSet
   // usa matchFunc para identificar elementos que matchien
-
+  if (matchFunc(startEl)) {
+    resultSet.push(startEl);
+  }
   // TU CÓDIGO AQUÍ
+  for (var i = 0; i < startEl.children.length; i++) {
+    var elements = traverseDomAndCollectElements(
+      matchFunc,
+      startEl.children[i]
+    );
+    resultSet = [...resultSet, ...elements];
+  }
+  return resultSet;
 };
 
 // Detecta la posicion cero del string para determinar el selector y lo devuelve: id, class, tag.class, tag
