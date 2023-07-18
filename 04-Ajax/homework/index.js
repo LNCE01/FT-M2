@@ -13,9 +13,28 @@ let showFriends = function () {
       // let list = document.getElementById("lista");
       // list.appendChild(li);
       //Con AJAX es mas sencillo: Para cada elemento del arreglo de objetos friends, crea un list item con id y nombre y lo apendea a la lista.
-      $("#lista").append(`<li id="${f.id}"> $(f.name} X</li>`);
+      $("#lista").append(`<li id="${f.id}"> ${f.name} X</li>`);
     });
   });
 };
 
 $("#boton").click(showFriends);
+
+$("#search").click(function () {
+  let id = $("#input").val(); //Seleccionamos el valor de lo que se ingresa en el input
+  if (id) {
+    let rta = $.get("http://localhost:5000/amigos/" + id, function (friend) {
+      if (friend) {
+        //Solicitamos al servidor un amigo de todo el arreglo de amigos
+        $("#amigo").text(
+          `Name: ${friend.name} Age: ${friend.age} Email: ${friend.email}`
+        );
+        $("#input").empty();
+      }
+    });
+    console.log(rta);
+  } else {
+    alert("Tenes que ingresar obligatoriamente un ID");
+    $("#amigos").text("Tenes que ingresar un ID");
+  }
+});
