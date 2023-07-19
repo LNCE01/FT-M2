@@ -13,7 +13,9 @@ let showFriends = function () {
       // let list = document.getElementById("lista");
       // list.appendChild(li);
       //Con AJAX es mas sencillo: Para cada elemento del arreglo de objetos friends, crea un list item con id y nombre y lo apendea a la lista.
-      $("#lista").append(`<li id="${f.id}"> ${f.name} X</li>`);
+      $("#lista").append(
+        `<li id="${f.id}"> ${f.name} <button onclick="deleteFriend(${f.id})">X</button> </li>`
+      );
     });
   });
 };
@@ -39,15 +41,24 @@ $("#search").click(function () {
   }
 });
 
-let deleteFriend = function () {
+let deleteFriend = function (idCruz) {
   let id;
-  id = $("#inputDelete").val();
+  if (typeof idCruz === "number") {
+    id = idCruz;
+  } else {
+    id = $("#inputDelete").val();
+  }
+
+  let friend1;
   if (id) {
+    let rta = $.get("http://localhost:5000/amigos/" + id, function (friend) {
+      friend1 = friend;
+    });
     $.ajax({
       url: "http://localhost:5000/amigos/" + id,
       type: "DELETE",
       success: function () {
-        $("#success").text("Tu amigo fue borrado");
+        $("#success").text(`Tu amigo ${friend1.name} fue borrado`);
         $("#inputDelete").val("");
         showFriends();
       },
