@@ -38,3 +38,22 @@ $("#search").click(function () {
     $("#amigos").text("Tenes que ingresar un ID");
   }
 });
+
+let deleteFriend = function () {
+  let id;
+  id = $("#inputDelete").val();
+  if (id) {
+    $.ajax({
+      url: "http://localhost:5000/amigos/" + id,
+      type: "DELETE",
+      success: function () {
+        $("#success").text("Tu amigo fue borrado");
+        $("#inputDelete").val("");
+        showFriends();
+      },
+    });
+  } else {
+    $("#success").text("Tenes que ingresar un ID");
+  }
+};
+$("#delete").click(deleteFriend);
