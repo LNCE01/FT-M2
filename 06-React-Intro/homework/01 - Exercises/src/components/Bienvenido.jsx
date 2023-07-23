@@ -10,7 +10,15 @@ export default function Bienvenido() {
   <div>
     <h1>Soy Henry</h1>
     <h3>{{studentName}}</h3>
-    <ul></ul>
+    <ul>
+        {(() => {
+          const skills = [];
+          for (let i = 0; i <techSkills.length; i++) {
+            skills.push(<li key={i}>{techSkills[i]}</li>);
+          }
+          return skills;
+        })()}
+      </ul>
   </div>
   );
 }
