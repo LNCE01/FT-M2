@@ -1,4 +1,5 @@
 import React from "react";
+import Botones from "./Botones"
 
 const studentName = "Nicolas";
 const techSkills = ["Html", "Css", "JavaScript", "React", "Redux"];
@@ -6,7 +7,7 @@ const alerts = { m1: "Aprobado", m2: "En curso" };
 
 export default function Bienvenido() {
   // el código de tu componente acá
-  
+
   return (
   <div>
     <h1>Soy Henry</h1>
@@ -20,6 +21,7 @@ export default function Bienvenido() {
           return skills;
         })()}
       </ul>
+      <Botones />
   </div>
   );
 }
