@@ -13,15 +13,12 @@ export default function Bienvenido(alerts) {
     <h1>Soy Henry</h1>
     <h3>{studentName}</h3>
     <ul>
-        {(() => {
-          const skills = [];
-          for (let i = 0; i <techSkills.length; i++) {
-            skills.push(<li key={i}>{techSkills[i]}</li>);
-          }
-          return skills;
-        })()}
-      </ul>
-      <Botones />
+      {techSkills.map((tech) => ( 
+      <li key={tech}>{tech}</li>
+      ))}
+    </ul>
+
+    <Botones />
   </div>
   );
 }
