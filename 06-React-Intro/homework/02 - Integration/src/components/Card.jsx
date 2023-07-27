@@ -2,12 +2,12 @@ export default function Card(props) {
    return (
       <div>
          <button onClick={props.onClose}>X</button>
-         <h2>{props.id}</h2>
-         <h2>{props.name}</h2>
-         <h2>{props.status}</h2>
-         <h2>{props.species}</h2>
-         <h2>{props.gender}</h2>
-         <h2>{props.origin}</h2>     
+         <div>{props.id}</div>
+         <div>{props.name}</div>
+         <div>{props.status}</div>
+         <div>{props.species}</div>
+         <div>{props.gender}</div>
+         <div>{props.origin}</div>     
          <img src={props.image} alt={`${props.name} image`} /> 
       </div>
    );
